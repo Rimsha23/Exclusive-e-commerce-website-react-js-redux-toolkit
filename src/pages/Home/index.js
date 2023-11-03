@@ -5,6 +5,7 @@ import products from '../../data/data.json';
 import ProductCardHome from '../../components/ProductCardHome';
 import Header from '../../components/Navbar';
 import Button from '../../components/Button';
+import Banner from '../../components/Banner';
 const Home = () => {
   const viewAllProducts = useSelector((state) => state.products.viewAllProducts);
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const handleShowAllProducts=()=>{
   return (
     <>
       <Header />
+      <Banner/>
       <div className='container'>
         <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>
           {filteredProducts.map((product) => (
@@ -26,7 +28,7 @@ const handleShowAllProducts=()=>{
           ))}
         </div>
         <div className='flex justify-center items-center'>
-        <Button
+        <Button className='mb-5'
           onClick={handleShowAllProducts}
         >
           {viewAllProducts ? 'View Fewer Products' : 'View All Products'}

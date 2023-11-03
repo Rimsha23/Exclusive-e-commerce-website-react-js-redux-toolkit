@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-
 import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
@@ -10,15 +9,15 @@ const Navbar = () => {
     <nav className="bg-white py-4 px-4 sm:px-8 md:px-16 flex flex-col sm:flex-row md:flex-row items-center justify-between border-b border-b-gray-300">
       <div className="flex items-center space-x-4">
         <div className='w-40'>
-        <h1 className="text-xl font-bold">Exclusive</h1>
+        <h1 className="text-2xl font-bold">Exclusive</h1>
         </div>
         <ul className="flex flex-row ml-12">
             <li>
-            <Link to={'/'} className='mr-3 no-underline text-black hover:underline'>
+            <Link to={'/'} className='mr-5 no-underline text-black hover:underline'>
           Home
           </Link>
           </li>
-          <li><a href="#" className='no-underline text-black hover:underline'>Products</a></li>
+          <li><Link to={'/products'}  className='no-underline text-black hover:underline'>Products</Link></li>
         </ul>
       </div>
       <div className="flex mt-0 items-center space-x-4">
@@ -35,6 +34,7 @@ const Navbar = () => {
         <button className="text-black text-[23px] hover:text-gray-600">
           <FontAwesomeIcon icon={faHeart} />
         </button>
+        <Link to={'/cart'}>
         <button className="text-gray-600">
          <span>
          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -45,6 +45,7 @@ const Navbar = () => {
 </svg>
          </span>
         </button>
+        </Link>
       </div>
     </nav>
     </div>
