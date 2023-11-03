@@ -2,14 +2,13 @@ import React,{useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
-import {
-  removeItemFromCart,
-  removeAllItemsFromCart,
-  updateCartItemQuantity,
-} from '../../redux/cart/cartSlice';
-
+import {removeItemFromCart,removeAllItemsFromCart,updateCartItemQuantity,} from '../../redux/cart/cartSlice';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import Navbar from '../Navbar';
 const CartPage = () => {
-    const [isHovered,setIsHovered]= useState(false);
+
+const [isHovered,setIsHovered]= useState(false);
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const calculateSubtotal = (item) => item.newPrice * item.quantity;
@@ -29,10 +28,27 @@ const CartPage = () => {
 const handleRemoveAll=()=>{
     dispatch(removeAllItemsFromCart())
 }
+const handleDownloadPDF = () => {
+    const contentToCapture = document.getElementById('cart-page');
+    const downloadButton = document.getElementById('download-button');
+    downloadButton.style.display = 'none';
+    const pdf = new jsPDF();
+    html2canvas(contentToCapture).then((canvas) => {
+      const imageData = canvas.toDataURL('image/png');
+      pdf.addImage(imageData, 'PNG', 10, 10, 190, 0);
+      pdf.save('cart-page.pdf');
+      downloadButton.style.display = 'block';
+    
+    });
+}
   return (
-    <div className="container mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-4">Cart</h2>
+    <div className="container mx-auto ">
+    <Navbar/>
 
+        <div className='mt-20 mb-20'>
+      <h2 className="text-[16px] font-semibold mb-4 text-gray-900">Cart <span className='text-gray-500'>/Home</span></h2>
+      </div>
+      <div id='cart-page'>
       <table className="w-11/12 mx-auto table-auto">
         <thead className='mb-4 gap-8'>
           <tr >
@@ -91,15 +107,27 @@ const handleRemoveAll=()=>{
         </Link>
         </div>
         <div className='ml-96'>
-        <Button className='ml-28' variant='white' onClick={handleRemoveAll}>Remove All From Cart</Button>
+        <Button className='ml-28' variant='white' onClick={handleRemoveAll}>Remove All</Button>
 
     </div>
 </div>
-      <div className="mt-8 flex flex-col">
-        <h3 className="text-lg font-bold">Cart Total</h3>
-        <p className="table-cell">Subtotal: ${calculateTotalPrice()}</p>
-        <p className="table-cell">Shipping: Free</p>
-        <p className="table-cell">Total: ${calculateTotalPrice()}</p>
+      <div className="mt-8 flex flex-col border border border-black w-96 h-80 items">
+        <h3 className="text-lg font-bold ml-8 mt-3 mb-3">Cart Total</h3>
+        <div className=' border-b border-b-gray-300 ml-6 h-10 mr-3'>
+        <p className="table-cell mb-2 ">Subtotal: <span className='ml-52'>${calculateTotalPrice()}</span></p>
+        </div>
+        <div className=' border-b border-b-gray-300 ml-6 mt-2 h-10 mr-3'>
+        <p className="table-cell ">Shipping: <span className='ml-52'> Free </span></p>
+        </div>
+        <div className=' border-b border-b-gray-300 ml-6 mt-2 mr-3 h-10'>
+        <p className="table-cell ">Total: <span className='ml-56'> ${calculateTotalPrice()}</span></p>
+        </div>
+         <div className='flex align-center justify-center mt-12 items-center'>
+        
+        <Button variant='red' id="download-button"  onClick={handleDownloadPDF}>Download Receipt</Button>
+    
+        </div>
+        </div>
       </div>
     </div>
   );

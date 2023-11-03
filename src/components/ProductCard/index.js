@@ -3,6 +3,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button';
 import { addItemToCart } from '../../redux/cart/cartSlice';
+import { addToFavourites } from '../../redux/products/productSlice';
 import { useDispatch } from 'react-redux';
 const ProductCard = ({ product }) => {
   const { title, image, newPrice, discountInPercentage } = product;
@@ -10,7 +11,9 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
     dispatch(addItemToCart(product));
   }
-  
+  const handleAddToFav=()=>{
+    dispatch(addToFavourites(product))
+  }
   return (
     <div className="max-w-xs rounded shadow-md m-4 w-60 h-80 ">
       <div className="relative">
@@ -19,7 +22,7 @@ const ProductCard = ({ product }) => {
           -{discountInPercentage}% 
         </div>
         <div className="absolute top-0 right-0 m-2">
-          <button className="text-black hover:text-gray-600">
+          <button onClick={handleAddToFav} className="text-black hover:text-gray-600">
             <span>
               <FontAwesomeIcon icon={faHeart} />
             </span>
@@ -27,7 +30,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
       <div className="flex mt-2 mb-2">
-        <Button className='flex items-center ' variant='black' size='full' onClick={handleAddToCart}>
+        <Button className='flex items-center justify-center ' variant='black' size='full' onClick={handleAddToCart}>
         <span className='text-white text-center'>
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <path d="M8.75 20.25C9.16421 20.25 9.5 19.9142 9.5 19.5C9.5 19.0858 9.16421 18.75 8.75 18.75C8.33579 18.75 8 19.0858 8 19.5C8 19.9142 8.33579 20.25 8.75 20.25Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
