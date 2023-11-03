@@ -5,10 +5,10 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { productReducer } from './redux/products/productSlice';
 import cartReducer from './redux/cart/cartSlice'; 
-
 const rootReducer = combineReducers({
   products: productReducer,
   cart: cartReducer, 
+ 
 });
 
 const persistConfig = {

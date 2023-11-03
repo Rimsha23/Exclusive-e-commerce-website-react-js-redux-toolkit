@@ -5,6 +5,7 @@ import Products from './pages/products';
 import CartPage from './pages/CartPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import {store,persistor} from './store'
+import CartItem from './components/cartItems/cartItem';
 import { Provider } from 'react-redux';
 import {
   createBrowserRouter,
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <CartPage/>
+  },
+  {
+    path: "/cartI",
+    element: <CartItem/>
   },
 ])
 function App() {

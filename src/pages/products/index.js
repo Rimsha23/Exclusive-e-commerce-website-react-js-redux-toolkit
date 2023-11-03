@@ -19,8 +19,8 @@ return(
 <div className='container'>
     <div className='flex flex-row mt-12 mb-16'>
         <h4 className='font-bold text-gray-600 text-[15px]'>Total Products ({products.length})</h4>
-        <div className='flex ml-96'>
-<Button onClick={handleAddAllToCart} className='ml-80' variant='white' >Move All To Cart</Button>
+        <div className='flex md:ml-40 sm:ml-40 lg:ml-96'>
+<Button onClick={handleAddAllToCart} className='lg:ml-80 md:ml- sm:ml-20' variant='white' >Move All To Cart</Button>
 </div>
     </div>
 <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>

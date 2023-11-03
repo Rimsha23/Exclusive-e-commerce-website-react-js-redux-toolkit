@@ -4,15 +4,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from 'react-redux';
-import { setSearchQuery } from '../../redux/products/productSlice';
-
 const Navbar = () => {
-  const dispatch = useDispatch();
-
-  const handleSearch = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-  };
   const cartItems=useSelector((state)=>state.cart.items);
   const fav=useSelector((state)=>state.products.products);
   return (
@@ -20,7 +12,9 @@ const Navbar = () => {
     <nav className="bg-white py-4 px-4 sm:px-8 md:px-16 flex flex-col sm:flex-row md:flex-row items-center justify-between border-b border-b-gray-300">
       <div className="flex items-center space-x-4">
         <div className='w-40'>
-        <h1 className="text-2xl font-bold">Exclusive</h1>
+          <Link to={'/'} className=" text-black font-bold no-underline">
+        <h1 className='text-2xl' >Exclusive</h1>
+        </Link>
         </div>
         <ul className="flex flex-row ml-32">
             <li>
@@ -36,7 +30,6 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="what are you looking for?"
-            onChange={handleSearch}
             className="border p-2 pr-8 rounded w-56"
           />
           <div className="absolute right-2 top-1/2 text-[20px] transform -translate-y-1/2 text-black hover:text-gray-400">
@@ -64,8 +57,6 @@ const Navbar = () => {
     </span>
   </button>
 </Link>
-
-        
       </div>
     </nav>
     </div>
