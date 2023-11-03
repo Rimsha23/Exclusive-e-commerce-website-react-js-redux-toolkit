@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
 import Products from './pages/products';
-import CartPage from './components/CartPage';
+import CartPage from './pages/CartPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import {store,persistor} from './store'
 import { Provider } from 'react-redux';

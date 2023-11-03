@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { showAllProducts } from '../../redux/products/productSlice'; 
 import products from '../../data/data.json';
@@ -9,7 +9,9 @@ import Banner from '../../components/Banner';
 const Home = () => {
   const viewAllProducts = useSelector((state) => state.products.viewAllProducts);
   const dispatch = useDispatch();
-
+  useEffect(() => {
+ document.title= 'Exclusive/Home'
+  }, []);
   const filteredProducts = viewAllProducts ? products : products.slice(0, 4);
 const handleShowAllProducts=()=>{
   dispatch(showAllProducts())

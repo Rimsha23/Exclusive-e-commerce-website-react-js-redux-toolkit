@@ -1,13 +1,15 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Button from '../Button';
+import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 import {removeItemFromCart,removeAllItemsFromCart,updateCartItemQuantity,} from '../../redux/cart/cartSlice';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 const CartPage = () => {
-
+  useEffect(() => {
+    document.title= 'Exclusive/Cart'
+     }, []);
 const [isHovered,setIsHovered]= useState(false);
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
@@ -30,14 +32,14 @@ const handleRemoveAll=()=>{
 }
 const handleDownloadPDF = () => {
     const contentToCapture = document.getElementById('cart-page');
-    const downloadButton = document.getElementById('download-button');
-    downloadButton.style.display = 'none';
+    const invisibleButton = document.getElementById('invisible-button');
+    invisibleButton.style.display = 'none';
     const pdf = new jsPDF();
-    html2canvas(contentToCapture).then((canvas) => {
+    html2canvas(contentToCapture,).then((canvas) => {
       const imageData = canvas.toDataURL('image/png');
       pdf.addImage(imageData, 'PNG', 10, 10, 190, 0);
-      pdf.save('cart-page.pdf');
-      downloadButton.style.display = 'block';
+      pdf.save('receipt.pdf');
+      invisibleButton.style.display = 'block';
     
     });
 }
@@ -67,10 +69,11 @@ const handleDownloadPDF = () => {
               <td className="table-cell" style={{ textAlign: 'left', paddingBottom: '70px' }}>
   <div className="flex items-center">
     <button
+    id='invisible-button'
       className={`text-red-500 hover:text-red-800 ${isHovered? 'd-block':'hidden'}`}
       onClick={() => handleRemoveItem(index)}
     >
-      <span>
+      <span id='invisible-button'>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="9" fill="#DB4444" />
           <path d="M9 15L12 12M15 9L11.9994 12M11.9994 12L9 9M12 12L15 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -103,15 +106,15 @@ const handleDownloadPDF = () => {
 <div className='flex flex-row m-16'>
     <div>
         <Link to={'/products'}>
-        <Button variant='white' >Return to Products</Button>
+        <Button id='invisible-button' variant='white' >Return to Products</Button>
         </Link>
         </div>
         <div className='ml-96'>
-        <Button className='ml-28' variant='white' onClick={handleRemoveAll}>Remove All</Button>
+        <Button id='invisible-button' className='ml-28' variant='white' onClick={handleRemoveAll}>Remove All</Button>
 
     </div>
 </div>
-      <div className="mt-8 flex flex-col border border border-black w-96 h-80 items">
+      <div className="mt-8 flex flex-col border border border-black w-96 h-80 items mb-5">
         <h3 className="text-lg font-bold ml-8 mt-3 mb-3">Cart Total</h3>
         <div className=' border-b border-b-gray-300 ml-6 h-10 mr-3'>
         <p className="table-cell mb-2 ">Subtotal: <span className='ml-52'>${calculateTotalPrice()}</span></p>
@@ -124,7 +127,7 @@ const handleDownloadPDF = () => {
         </div>
          <div className='flex align-center justify-center mt-12 items-center'>
         
-        <Button variant='red' id="download-button"  onClick={handleDownloadPDF}>Download Receipt</Button>
+        <Button  variant='red' id="invisible-button"  onClick={handleDownloadPDF}>Download Receipt</Button>
     
         </div>
         </div>

@@ -3,8 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { setSearchQuery } from '../../redux/products/productSlice';
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    dispatch(setSearchQuery(e.target.value));
+  };
   const cartItems=useSelector((state)=>state.cart.items);
   const fav=useSelector((state)=>state.products.products);
   return (
@@ -28,6 +36,7 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="what are you looking for?"
+            onChange={handleSearch}
             className="border p-2 pr-8 rounded w-56"
           />
           <div className="absolute right-2 top-1/2 text-[20px] transform -translate-y-1/2 text-black hover:text-gray-400">

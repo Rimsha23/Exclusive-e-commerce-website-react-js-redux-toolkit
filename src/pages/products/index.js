@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import products from '../../data/data.json'
 import Navbar from '../../components/Navbar';
 import ProductCard from '../../components/ProductCard';
@@ -7,6 +7,9 @@ import { addAllItemsToCart } from '../../redux/cart/cartSlice';
 import { useDispatch } from 'react-redux';
 const Products=()=>{
   const dispatch=useDispatch();
+  useEffect(() => {
+    document.title= 'Exclusive/Products'
+     }, []);
   const handleAddAllToCart=()=>{
     dispatch(addAllItemsToCart(products))
   }
