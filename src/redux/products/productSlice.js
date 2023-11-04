@@ -4,21 +4,21 @@ const productSlice = createSlice({
   name: 'products',
   initialState: {
     viewAllProducts: false,
-   products:[],
-   searchProduct: '',
+    products: [],
+    searchProduct: '',
   },
   reducers: {
     showAllProducts: (state) => {
       state.viewAllProducts = !state.viewAllProducts;
     },
-    addToFavourites:(state,action)=>{
+    addToFavourites: (state, action) => {
       state.products.push(action.payload)
     },
-   searchByName:(state,action)=>{
-    state.searchProduct=action.payload;
-   }
+    searchByName: (state, action) => {
+      state.searchProduct = action.payload;
+    }
   },
 });
 
-export const { showAllProducts,addToFavourites,searchByName } = productSlice.actions;
-export const productReducer= productSlice.reducer;
+export const { showAllProducts, addToFavourites, searchByName } = productSlice.actions;
+export const productReducer = productSlice.reducer;

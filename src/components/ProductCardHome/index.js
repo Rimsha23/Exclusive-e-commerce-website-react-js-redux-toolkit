@@ -35,7 +35,7 @@ const ProductCardHome = ({ product }) => {
           ${newPrice}
         </div>
         <div className="text-gray-500 text-[13px] ml-2 line-through font-medium">
-          ${oldPrice} 
+          ${oldPrice}
         </div>
       </div>
     </div>
