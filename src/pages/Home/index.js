@@ -12,33 +12,36 @@ const Home = () => {
   useEffect(() => {
  document.title= 'Exclusive/Home'
   }, []);
-  const filteredProducts = viewAllProducts ? products : products.slice(0, 4);
 const handleShowAllProducts=()=>{
   dispatch(showAllProducts())
   console.log(viewAllProducts)
 }
-  return (
-    <>
-      <Header />
-      <Banner/>
-      <div className='container'>
-        <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>
-          {filteredProducts.map((product) => (
-            <div key={product.id}>
-              <ProductCardHome product={product} />
-            </div>
-          ))}
-        </div>
-        <div className='flex justify-center items-center'>
-        <Button className='mb-5'
-          onClick={handleShowAllProducts}
-        >
-          {viewAllProducts ? 'View Fewer Products' : 'View All Products'}
-          </Button>
+const filteredProducts = viewAllProducts ? products : products.slice(0, 4);
+
+return (
+  <>
+    <Header />
+    <Banner />
+    <div className='container'>
+     
+          <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>
+            {filteredProducts.map((product) => (
+              <div key={product.id}>
+                <ProductCardHome product={product} />
+              </div>
+            ))}
           </div>
-      </div>
-    </>
-  );
+          <div className='flex justify-center items-center'>
+            <Button className='mb-5' onClick={handleShowAllProducts}>
+              {viewAllProducts ? 'View Fewer Products' : 'View All Products'}
+            </Button>
+          </div>
+         
+    </div>
+  </>
+);
+
+
 };
 
 export default Home;

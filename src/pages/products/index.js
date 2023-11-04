@@ -4,15 +4,20 @@ import Navbar from '../../components/Navbar';
 import ProductCard from '../../components/ProductCard';
 import Button from '../../components/Button';
 import { addAllItemsToCart } from '../../redux/cart/cartSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 const Products=()=>{
   const dispatch=useDispatch();
+  const searchedProducts= useSelector((state)=>state.products.searchProduct)
   useEffect(() => {
     document.title= 'Exclusive/Products'
      }, []);
   const handleAddAllToCart=()=>{
     dispatch(addAllItemsToCart(products))
   }
+  const searchProducts = products.filter(item =>
+    item.title.toLowerCase().includes(searchedProducts.toLowerCase())
+  );
+  
 return(
     <>
 <Navbar/>
@@ -23,6 +28,15 @@ return(
 <Button onClick={handleAddAllToCart} className='lg:ml-80 md:ml- sm:ml-20' variant='white' >Move All To Cart</Button>
 </div>
     </div>
+    {searchProducts.length > 0 ? (
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>
+        {searchProducts.map((sproduct) => (
+          <ProductCard product={sproduct} />
+        ))}
+        </div>
+
+      ) : (
+        <> 
 <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-10'>
           {products.map((product) => (
             <div key={product.id}>
@@ -30,7 +44,10 @@ return(
             </div>
           ))}
         </div>
+        </>
+            )}
 </div>
+
     </>
 );
 }

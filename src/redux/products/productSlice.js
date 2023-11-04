@@ -5,6 +5,7 @@ const productSlice = createSlice({
   initialState: {
     viewAllProducts: false,
    products:[],
+   searchProduct: '',
   },
   reducers: {
     showAllProducts: (state) => {
@@ -13,9 +14,11 @@ const productSlice = createSlice({
     addToFavourites:(state,action)=>{
       state.products.push(action.payload)
     },
-   
+   searchByName:(state,action)=>{
+    state.searchProduct=action.payload;
+   }
   },
 });
 
-export const { showAllProducts,addToFavourites } = productSlice.actions;
+export const { showAllProducts,addToFavourites,searchByName } = productSlice.actions;
 export const productReducer= productSlice.reducer;

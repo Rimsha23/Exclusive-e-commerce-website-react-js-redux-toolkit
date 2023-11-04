@@ -4,9 +4,17 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { searchByName } from '../../redux/products/productSlice';
+
 const Navbar = () => {
   const cartItems=useSelector((state)=>state.cart.items);
   const fav=useSelector((state)=>state.products.products);
+  const searchQuery=useSelector((state)=>state.products.searchProduct);
+  const dispatch=useDispatch();
+  const handleSearchByName=(e)=>{
+    dispatch(searchByName(e))
+  }
   return (
     <div className='container mt-2'>
     <nav className="bg-white py-4 px-4 sm:px-8 md:px-16 flex flex-col sm:flex-row md:flex-row items-center justify-between border-b border-b-gray-300">
@@ -31,6 +39,8 @@ const Navbar = () => {
             type="text"
             placeholder="what are you looking for?"
             className="border p-2 pr-8 rounded w-56"
+            value={searchQuery}
+            onChange={(e)=>{handleSearchByName(e.target.value)}}
           />
           <div className="absolute right-2 top-1/2 text-[20px] transform -translate-y-1/2 text-black hover:text-gray-400">
             <FontAwesomeIcon icon={faMagnifyingGlass} />

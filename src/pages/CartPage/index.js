@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,6 @@ const CartPage = () => {
   useEffect(() => {
     document.title= 'Exclusive/Cart'
      }, []);
-const [isHovered,setIsHovered]= useState(false);
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   
@@ -25,7 +24,7 @@ const handleRemoveAll=()=>{
 }
 const handleDownloadPDF = () => {
     const contentToCapture = document.getElementById('cart-page');
-    const invisibleButton = document.getElementById('invisible-button');
+    const invisibleButton = document.getElementById('rmv-btn');
     invisibleButton.style.display = 'none';
     const pdf = new jsPDF();
     html2canvas(contentToCapture,).then((canvas) => {
@@ -49,11 +48,11 @@ const handleDownloadPDF = () => {
 <div className='flex lg:flex-row flex-row sm:flex-col m-16'>
     <div>
         <Link to={'/products'}>
-        <Button id='invisible-button' variant='white' >Return to Products</Button>
+        <Button id='rmv-btn' variant='white' >Return to Products</Button>
         </Link>
         </div>
         <div className='lg:ml-96 sm:mt-4 md:mt-0 lg:mt-0 '>
-        <Button id='invisible-button' className='lg:ml-28 ml-5' variant='white' onClick={handleRemoveAll}>Remove All</Button>
+        <Button id='rmv-btn' className='lg:ml-28 ml-5' variant='white' onClick={handleRemoveAll}>Remove All</Button>
 
     </div>
 </div>
@@ -70,7 +69,7 @@ const handleDownloadPDF = () => {
         </div>
          <div className='flex align-center justify-center mt-12 items-center'>
         
-        <Button  variant='red' id="invisible-button"  onClick={handleDownloadPDF}>Download Receipt</Button>
+        <Button  variant='red' id="rmv-btn"  onClick={handleDownloadPDF}>Download Receipt</Button>
     
         </div>
         </div>
