@@ -30,11 +30,11 @@ const Navbar = () => {
           </div>
           <ul className="flex flex-row mt-2 ml-32">
             <li>
-              <Link to={'/'} className={`mr-5  font-normal text-black hover:text-[17px] ${isActive('/') ? 'underline text-[13px]' : 'no-underline text-[15px]'}`}>
+              <Link to={'/'} className={`mr-5  font-normal text-black hover:text-[17px] ${isActive('/') ? 'underline underline-offset-4 text-[13px]' : 'no-underline text-[15px]'}`}>
                 Home
               </Link>
             </li>
-            <li><Link to={'/products'} className={`font-normal text-black hover:text-[17px] ${isActive('/products') ? 'underline text-[13px]' : 'no-underline text-[15px]'}`}>Products</Link></li>
+            <li><Link to={'/products'} className={`font-normal text-black hover:text-[17px] ${isActive('/products') ? 'underline underline-offset-4 text-[13px] ' : 'no-underline text-[15px]'}`}>Products</Link></li>
           </ul>
         </div>
         <div className="flex mt-0 items-center space-x-4">
