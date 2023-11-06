@@ -5,7 +5,7 @@ import Products from './pages/products';
 import CartPage from './pages/CartPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import {store,persistor} from './store'
-import CartItem from './components/cartItems/cartItem';
+import CartItem from './components/cartItems';
 import { Provider } from 'react-redux';
 import {
   createBrowserRouter,

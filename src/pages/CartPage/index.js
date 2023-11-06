@@ -6,7 +6,7 @@ import { removeAllItemsFromCart } from '../../redux/cart/cartSlice';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Navbar from '../../components/Navbar';
-import CartItem from '../../components/cartItems/cartItem';
+import CartItem from '../../components/cartItems';
 const CartPage = () => {
   useEffect(() => {
     document.title = 'Exclusive/Cart'
