@@ -13,10 +13,10 @@ const ProductCardHome = ({ product }) => {
   }
 
   return (
-    <div className="max-w-xs rounded shadow-md m-4 w-60 h-76">
-      <div className="relative">
-        <img className="w-full h-52" src={image} alt={title} />
-        <div className="absolute w-10 h-5 top-0 left-0 bg-red-600 text-white text-center text-[10px] rounded-md p-1">
+    <div className="max-w-xs rounded  m-4 w-60 h-76  font-poppins">
+      <div className="relative  h-48 ">
+        <img className="w-full h-44" src={image} alt={title} />
+        <div className="absolute w-12 h-5 top-0 left-0 bg-red-600 text-white text-center text-[10px] rounded-md p-1">
           -{discountInPercentage}%
         </div>
         <div className="absolute top-0 right-0 m-2">
@@ -28,15 +28,15 @@ const ProductCardHome = ({ product }) => {
         </div>
       </div>
       <div className="">
-        <h3 className="font-bold text-xl mb-2">{title}</h3>
+        <h3 className="font-medium pl-1 text-[17px] text-gray-900 mb-2">{title}</h3>
       </div>
       <div className="px-1 pb-3 flex flex-row">
-        <div className="text-red-600 text-[13px] font-medium">
+        <p className="text-red-600 pl-1 text-[13px] font-medium">
           ${newPrice}
-        </div>
-        <div className="text-gray-500 text-[13px] ml-2 line-through font-medium">
+        </p>
+        <p className="text-gray-500 pl-1 text-[13px] ml-2 line-through font-medium">
           ${oldPrice}
-        </div>
+        </p>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const Products = () => {
   return (
     <>
       <Navbar />
-      <div className='container'>
+      <div className='container font-poppins'>
         <div className='flex flex-row mt-12 mb-16'>
           <h4 className='font-bold text-gray-600 text-[15px]'>Total Products ({products.length})</h4>
           <div className='flex md:ml-40 sm:ml-40 lg:ml-96'>

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Banner = () => {
   return (
-    <div className=' w-10/12 mr-32 bg-black text-white ' style={{ margin: '40px 135px 140px 135px' }}>
+    <div className=' container w-10/12 mr-32 bg-black text-white font-poppins mt-12 mb-16' >
       <div className='flex'>
         <div className='w-1/3 relative'>
           <div className='flex space-x-5 absolute ml-8 mt-8'>

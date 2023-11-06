@@ -23,7 +23,7 @@ const CartPage = () => {
     dispatch(removeAllItemsFromCart())
   }
   const handleDownloadPDF = () => {
-    const contentToCapture = document.getElementById('cart-page');
+    const contentToCapture = document.getElementById('receipt');
     const invisibleButton = document.getElementById('rmv-btn');
     invisibleButton.style.display = 'none';
     const pdf = new jsPDF();
@@ -36,7 +36,7 @@ const CartPage = () => {
     });
   }
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto font-poppins ">
       <Navbar />
 
       <div className='mt-20 mb-20'>
@@ -48,15 +48,15 @@ const CartPage = () => {
         <div className='flex lg:flex-row flex-row sm:flex-col m-16'>
           <div>
             <Link to={'/products'}>
-              <Button id='rmv-btn' variant='white' >Return to Products</Button>
+              <Button  variant='white' >Return to Products</Button>
             </Link>
           </div>
           <div className='lg:ml-96 sm:mt-4 md:mt-0 lg:mt-0 '>
-            <Button id='rmv-btn' className='lg:ml-28 ml-5' variant='white' onClick={handleRemoveAll}>Remove All</Button>
+            <Button  className='lg:ml-28 ml-5' variant='white' onClick={handleRemoveAll}>Remove All</Button>
 
           </div>
         </div>
-        <div className="mt-8 flex flex-col border border border-black w-96 h-80 items mb-5">
+        <div className="mt-8 flex flex-col border border border-black w-96 h-80 items mb-5" id='receipt'>
           <h3 className="text-lg font-bold ml-8 mt-3 mb-3">Cart Total</h3>
           <div className=' border-b border-b-gray-300 ml-6 h-10 mr-3'>
             <p className="table-cell mb-2 ">Subtotal: <span className='ml-52'>${calculateTotalPrice()}</span></p>

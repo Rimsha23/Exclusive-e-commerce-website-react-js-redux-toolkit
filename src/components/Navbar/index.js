@@ -16,21 +16,21 @@ const Navbar = () => {
     dispatch(searchByName(e))
   }
   return (
-    <div className='container mt-2'>
+    <div className='container font-poppins mt-2'>
       <nav className="bg-white py-4 px-4 sm:px-8 md:px-16 flex flex-col sm:flex-row md:flex-row items-center justify-between border-b border-b-gray-300">
         <div className="flex items-center space-x-4">
           <div className='w-40'>
-            <Link to={'/'} className=" text-black font-bold no-underline">
+            <Link to={'/'} className=" text-black font-extrabold no-underline">
               <h1 className='text-2xl' >Exclusive</h1>
             </Link>
           </div>
           <ul className="flex flex-row ml-32">
             <li>
-              <Link to={'/'} className='mr-5 no-underline text-black hover:underline'>
+              <Link to={'/'} className='mr-5 no-underline font-medium text-black hover:underline'>
                 Home
               </Link>
             </li>
-            <li><Link to={'/products'} className='no-underline text-black hover:underline'>Products</Link></li>
+            <li><Link to={'/products'} className='no-underline font-medium text-black hover:underline'>Products</Link></li>
           </ul>
         </div>
         <div className="flex mt-0 items-center space-x-4">
@@ -38,7 +38,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="what are you looking for?"
-              className="border p-2 pr-8 rounded w-56"
+              className="border p-2 pr-8 rounded w-60 bg-gray-50 placeholder:font-light"
               value={searchQuery}
               onChange={(e) => { handleSearchByName(e.target.value) }}
             />

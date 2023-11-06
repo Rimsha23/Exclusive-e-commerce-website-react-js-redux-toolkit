@@ -15,10 +15,10 @@ const ProductCard = ({ product }) => {
     dispatch(addToFavourites(product))
   }
   return (
-    <div className="max-w-xs rounded shadow-md m-4 w-60 h-80 ">
+    <div className="max-w-xs rounded shadow-md m-4 w-60 h-80 font-poppins ">
       <div className="relative">
         <img className="w-full h-52" src={image} alt={title} />
-        <div className="absolute w-10 h-5 top-0 left-0 bg-red-600 text-white text-center text-[10px] rounded-md p-1">
+        <div className="absolute w-12 h-5 top-0 left-0 bg-red-600 text-white text-center text-[10px] rounded-md p-1">
           -{discountInPercentage}%
         </div>
         <div className="absolute top-0 right-0 m-2">
@@ -41,13 +41,10 @@ const ProductCard = ({ product }) => {
           </span>
           Add To Cart</Button>
       </div>
-      <h3 className="font-bold text-lg mb-1">{title}</h3>
-
-      <div className="px-1 pb-3 flex flex-row">
-        <div className="text-red-600 text-[13px] font-medium">
+      <h3 className="font-medium pl-2 text-gray-900 text-[17px] mb-1">{title}</h3>
+        <p className=" pl-2 text-red-600 text-[13px] font-medium">
           ${newPrice}
-        </div>
-      </div>
+      </p>
     </div>
   );
 };
