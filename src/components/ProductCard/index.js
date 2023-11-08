@@ -15,8 +15,8 @@ const ProductCard = ({ product }) => {
     dispatch(addToFavourites(product))
   }
   return (
-    <div className="max-w-xs rounded shadow-md m-4 w-60 h-80 font-poppins ">
-      <div className="relative">
+    <div className="max-w-xs rounded  m-4 w-60 h-80 font-poppins ">
+      <div className="relative bg-gray-200">
         <img className="w-full h-52" src={image} alt={title} />
         <div className="absolute w-12 h-5 top-0 left-0 bg-red-600 text-white text-center text-[10px] rounded-md p-1">
           -{discountInPercentage}%

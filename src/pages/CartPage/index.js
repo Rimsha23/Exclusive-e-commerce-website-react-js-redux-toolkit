@@ -39,7 +39,7 @@ const CartPage = () => {
     <div className="container mx-auto font-poppins ">
       <Navbar />
 
-      <div className='mt-20 mb-20'>
+      <div className='mt-20 mb-6'>
         <h2 className="text-[16px] font-semibold mb-4 text-gray-900">Cart <span className='text-gray-500'>/Home</span></h2>
       </div>
       <div id='cart-page'>
