@@ -14,10 +14,10 @@ const Banner = () => {
             <p className='text-white text-lg font-normal pt-2'>iPhone 14 Series</p>
           </div>
           <div className='absolute ml-8 mt-28'>
-            <p className='text-5xl font-medium leading-14'>Up to 10% off Voucher</p>
+            <p className='lg:text-4xl text-3xl font-semibold'>Up to 10% off Voucher</p>
           </div>
           <div className='absolute ml-8 mt-56'>
-            <button className='hover:underline hover:underline-offset-8'>
+            <button className='hover:underline hover:underline-offset-8 mt-auto'>
               Shop Now <span ><FontAwesomeIcon icon={faArrowRight} /></span>
             </button>
           </div>

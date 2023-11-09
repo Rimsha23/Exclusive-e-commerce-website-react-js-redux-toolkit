@@ -33,7 +33,7 @@ const CartItem = () => {
              
             >
               <td className="table-cell">
-                <div className="flex relative items-center group">
+                <div className="flex relative items-center group ">
                 <img
                     src={item.image}
                     alt={item.title}
@@ -60,7 +60,7 @@ const CartItem = () => {
                 <input
                   type="number"
                   value={item.quantity}
-                  className='h-6 w-16 border-[2px] border-gray-500'
+                  className='h-8 w-16 border-[2px] border-gray-500'
                   onChange={(e) => handleQuantityChange(item.id, e)}
                 />
               </td>

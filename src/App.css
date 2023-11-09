@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  
 }
 
 .App-logo {
@@ -36,4 +37,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1
 }

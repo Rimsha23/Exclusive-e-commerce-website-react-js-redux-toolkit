@@ -45,14 +45,14 @@ const CartPage = () => {
       <div id='cart-page'>
 
         <CartItem />
-        <div className='flex lg:flex-row flex-row sm:flex-col m-16'>
+        <div className='flex lg:flex-row flex-row sm:flex-col mt-16'>
           <div>
             <Link to={'/products'}>
               <Button  variant='white' >Return to Products</Button>
             </Link>
           </div>
           <div className='lg:ml-96 sm:mt-4 md:mt-0 lg:mt-0 '>
-            <Button  className='lg:ml-28 ml-5' variant='white' onClick={handleRemoveAll}>Remove All</Button>
+            <Button  className='lg:ml-28 ml-3' variant='white' onClick={handleRemoveAll}>Remove All</Button>
 
           </div>
         </div>
