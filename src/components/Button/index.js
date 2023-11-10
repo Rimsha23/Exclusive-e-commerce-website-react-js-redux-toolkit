@@ -9,8 +9,8 @@ const sizes = {
     'small': 'px-1 py-2 text-xs hover:text-xs',
     'medium': 'px-2 py-2 text-sm',
     'large': 'px-2 py-1 text-[13px] w-52 h-16 ',
-    'full': 'px-2 py-1 text-[13px]  h-10 w-full'
-
+    'full': 'px-2 py-1 text-[13px]  h-10 w-full',
+    'square': 'w-12 h-12'
 }
 
 const Button = ({ className, variant = 'red', size = 'large', ...props }) => {

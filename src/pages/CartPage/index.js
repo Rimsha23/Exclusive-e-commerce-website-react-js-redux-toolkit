@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 import { removeAllItemsFromCart } from '../../redux/cart/cartSlice';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../components/Navbar';
 import CartItem from '../../components/cartItems';
 const CartPage = () => {
+  const [isScrolled,setIsScrolled]= useState(false);
   useEffect(() => {
     document.title = 'Exclusive/Cart'
   }, []);
@@ -17,7 +20,6 @@ const CartPage = () => {
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.quantity * item.newPrice, 0);
   };
-
 
   const handleRemoveAll = () => {
     dispatch(removeAllItemsFromCart())
@@ -35,6 +37,20 @@ const CartPage = () => {
 
     });
   }
+  window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    setIsScrolled(true)
+  } else {
+    setIsScrolled(false)
+  
+  }
+}
+
+const scrollBackToTop=()=>{
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop = 0
+}
   return (
     <div className="container mx-auto font-poppins ">
       <Navbar />
@@ -74,6 +90,9 @@ const CartPage = () => {
           </div>
         </div>
       </div>
+      <Button id='scrollBtn' variant='black' size='square' className={`fixed bottom-6 right-4 ${isScrolled? 'd-block':'hidden'}`} onClick={scrollBackToTop}>
+  <span><FontAwesomeIcon icon={faArrowUp} className='text-white'></FontAwesomeIcon></span>
+  </Button>
     </div>
   );
 };
