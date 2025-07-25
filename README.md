@@ -1,7 +1,7 @@
 
 ---
 
-## ✅ 2. **Exclusive E-Commerce Website – React + Redux Toolkit**
+## ✅  **Exclusive E-Commerce Website – React + Redux Toolkit**
 
 📁 GitHub: [E-Commerce Project](https://github.com/Rimsha23/Exclusive-e-commerce-website-react-js-redux-toolkit/tree/master)
 
